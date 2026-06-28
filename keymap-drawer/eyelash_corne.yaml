@@ -21,7 +21,7 @@ layers:
   - F
   - G
   - $$mdi:arrow-left-bold$$
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - $$mdi:play-pause$$
   - $$mdi:arrow-right-bold$$
   - H
   - J
@@ -197,9 +197,9 @@ layers:
   - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
 combos:
-- p: [1, 15, 29]
-  k: '&soft_off'
 - p: [16, 17]
   k: $$mdi:keyboard-esc$$
 - p: [23, 24]
   k: {t: '$$mdi:keyboard-return$$', type: enter}
+- p: [24, 25]
+  k: $$mdi:apple-keyboard-control$$
