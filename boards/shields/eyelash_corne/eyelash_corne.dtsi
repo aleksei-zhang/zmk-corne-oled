@@ -43,6 +43,8 @@
 
 
     kscan0: kscan {
+        /* 深睡唤醒源：按下任意按键把 MCU 从 System OFF 唤醒 */
+        wakeup-source;
         diode-direction = "col2row";
     };
     
@@ -131,6 +133,20 @@ zephyr_udc0: &usbd {
     pinctrl-0 = <&pwm0_default>;
     pinctrl-1 = <&pwm0_sleep>;
     pinctrl-names = "default", "sleep";
+};
+
+/*
+ * 硬保险：P0.13 是 VEXT（屏幕 + WS2812 灯带）的负载开关。
+ * 这里用 gpio-hog 在开机时（GPIO 驱动就绪后）直接把它钉成输出低电平，
+ * 不依赖 CONFIG_ZMK_EXT_POWER / settings / Studio，确保这两路永远断电。
+ * gpios = <pin flags>（父节点是 gpio0，所以不带 phandle），0 = GPIO_ACTIVE_HIGH。
+ */
+&gpio0 {
+    vext_disable {
+        gpio-hog;
+        gpios = <13 0>;
+        output-low;
+    };
 };
 
 
