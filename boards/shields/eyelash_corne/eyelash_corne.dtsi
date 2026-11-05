@@ -43,7 +43,7 @@
 
 
     kscan0: kscan {
-        /* 深睡唤醒源：按下任意按键把 MCU 从 System OFF 唤醒 */
+        /* 深睡唤醒源：当前 CONFIG_ZMK_SLEEP=n 时不生效，保留以便以后重新开启深睡 */
         wakeup-source;
         diode-direction = "col2row";
     };
